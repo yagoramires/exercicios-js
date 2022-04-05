@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/style.css">
+  <title>Cálculo de IMC</title>
+  
+</head>
+<body>
+
+  <main>
+    <div class="container">
+      <h1 class="container__title">Tabela IMC</h1>
+      <div class="container__session__description">
+        <div>
+          <p class="container__session__description__title">IMC</p>
+          <p class="container__session__description__text">Menos que 18,5</p>
+          <p class="container__session__description__text">Entre 18,5 e 24,9</p>
+          <p class="container__session__description__text">Entre 25 E 29,9</p>
+          <p class="container__session__description__text">Entre 30 e 34,9</p>
+          <p class="container__session__description__text">Entre 35 e 39,9</p>
+          <p class="container__session__description__text">Mais que 40</p>
+        </div>
+        <div>
+          <p class="container__session__description__title">Resultado</p>
+          <p class="container__session__description__text">Abaixo do peso</p>
+          <p class="container__session__description__text">Peso normal</p>
+          <p class="container__session__description__text">Sobrepeso</p>
+          <p class="container__session__description__text">Obesidade grau 1</p>
+          <p class="container__session__description__text">Obesidade grau 2</p>
+          <p class="container__session__description__text">Obesidade grau 3</p>
+        </div>
+      </div>
+
+      <form class="container__session__form">
+        <p class="container__session__form__title">Calcule seu IMC</p>
+        <p class="container__session__form__label">Peso (kg):</p>
+        <input type="number" class="container__session__form__input weight">
+        <p class="container__session__form__label">Altura (cm):</p>
+        <input type="number" class="container__session__form__input height">
+        <button type="submit" class="container__session__form__button"> Calcular </button>
+
+      </form>
+    </div>
+  </main>
+  <script src="./scripts.js"></script>
+</body>
+</html>
