@@ -39,7 +39,6 @@ function createCalc() {
     enterClick() {
       document.addEventListener("keypress", (e) => {
         e.preventDefault();
-        console.log(e.key);
 
         if (e.key === "Enter") {
           this.calculate();
