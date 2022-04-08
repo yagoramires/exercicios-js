@@ -1,10 +1,3 @@
-const numberButton = document.querySelectorAll(".number");
-const operatorButton = document.querySelectorAll(".operator");
-
-numberButton.forEach((btn) => {
-  btn.addEventListener("click", () => {});
-});
-
 function createCalc() {
   return {
     inputDisplay: document.querySelector(".container__input"),
