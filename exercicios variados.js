@@ -175,23 +175,23 @@
 //   console.log("Hello World");
 // }
 
-function createPerson(nome, idade, peso, altura) {
-  return {
-    nome,
-    idade,
-    peso,
-    altura,
-    get imc() {
-      return this.peso / this.altura ** 2;
-    },
-    get falaImc() {
-      return `Esta pessoa tem o IMC de: ${this.imc.toFixed(2)}`;
-    },
-  };
-}
+// function createPerson(nome, idade, peso, altura) {
+//   return {
+//     nome,
+//     idade,
+//     peso,
+//     altura,
+//     get imc() {
+//       return this.peso / this.altura ** 2;
+//     },
+//     get falaImc() {
+//       return `Esta pessoa tem o IMC de: ${this.imc.toFixed(2)}`;
+//     },
+//   };
+// }
 
-const p1 = createPerson("Yago", 25, 74, 1.7);
-const p2 = createPerson("Nathalia", 25, 67, 1.56);
+// const p1 = createPerson("Yago", 25, 74, 1.7);
+// const p2 = createPerson("Nathalia", 25, 67, 1.56);
 
-console.log(p1.falaImc);
+// console.log(p1.falaImc);
 // console.log(p2.falaImc());
