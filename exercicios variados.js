@@ -195,3 +195,24 @@
 
 // console.log(p1.falaImc);
 // console.log(p2.falaImc());
+
+function* geradora() {
+  yield function () {
+    console.log("yield 1");
+  };
+
+  yield function () {
+    console.log("yield 2");
+  };
+}
+
+const g1 = geradora();
+
+const func1 = g1.next().value;
+const func2 = g1.next().value;
+
+func1();
+func1();
+func2();
+func1();
+func1();
