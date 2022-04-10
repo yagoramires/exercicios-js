@@ -196,23 +196,240 @@
 // console.log(p1.falaImc);
 // console.log(p2.falaImc());
 
-function* geradora() {
-  yield function () {
-    console.log("yield 1");
-  };
+// function* geradora() {
+//   yield function () {
+//     console.log("yield 1");
+//   };
 
-  yield function () {
-    console.log("yield 2");
-  };
-}
+//   yield function () {
+//     console.log("yield 2");
+//   };
+// }
 
-const g1 = geradora();
+// const g1 = geradora();
 
-const func1 = g1.next().value;
-const func2 = g1.next().value;
+// const func1 = g1.next().value;
+// const func2 = g1.next().value;
 
-func1();
-func1();
-func2();
-func1();
-func1();
+// func1();
+// func1();
+// func2();
+// func1();
+// func1();
+
+// const num = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 15, 22, 27];
+
+// const numFilter = num.filter((value) => value > 10);
+
+// console.log(numFilter);
+
+// const pessoas = [
+//   { nome: "Yago", idade: 25 },
+//   { nome: "Nathalia", idade: 25 },
+//   { nome: "Roberto", idade: 43 },
+//   { nome: "Fabiola", idade: 46 },
+//   { nome: "Luiz Carlos", idade: 47 },
+//   { nome: "Maria Luiza", idade: 13 },
+//   { nome: "Daniel", idade: 24 },
+// ];
+
+// const nomeGrande = pessoas.filter((value) => value.nome.length >= 7);
+// console.log(nomeGrande);
+
+// const maiorque40 = pessoas.filter((value) => value.idade >= 40);
+// console.log(maiorque40);
+
+// const terminacomA = pessoas.filter((value) =>
+//   value.nome.toLowerCase().endsWith("a")
+// );
+// console.log(terminacomA);
+
+// const num = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 15, 22, 27];
+
+// const dobro = num.map((v) => v * 2);
+//console.log(dobro);
+
+// const pessoas = [
+//   { nome: "Yago", idade: 25 },
+//   { nome: "Nathalia", idade: 25 },
+//   { nome: "Roberto", idade: 43 },
+//   { nome: "Fabiola", idade: 46 },
+//   { nome: "Luiz Carlos", idade: 47 },
+//   { nome: "Maria Luiza", idade: 13 },
+//   { nome: "Daniel", idade: 24 },
+// ];
+
+// const strings = pessoas.map((obj) => obj.nome);
+// console.log(strings);
+
+// const nomeRemoveDel = pessoas.map((obj) => {
+//   delete obj.nome;
+//   return obj;
+// });
+// console.log(nomeRemoveDel);
+
+// const nomeRemoveNew = pessoas.map((obj) => ({ idade: obj.idade }));
+// console.log(nomeRemoveNew);
+
+// const addId = pessoas.map((obj, index) => {
+//   return { id: index, ...obj };
+// });
+// console.log(addId);
+
+// const addIndex = pessoas.map((obj, index) => {
+//   obj.id = index + 1;
+//   return obj;
+// });
+// console.log(addIndex);
+
+// const num = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 15, 22, 27];
+
+// const total = num.reduce((acc, num) => {
+//   acc += num;
+//   return acc;
+// }, 0);
+
+// console.log(total);
+
+// const pares = num.reduce((acc, num) => {
+//   if (num % 2 === 0) acc.push(num);
+//   return acc;
+// }, []);
+
+// console.log(pares);
+
+// const dobro = num.reduce((acc, valor) => {
+//   const mult = valor * 2;
+//   acc.push(mult);
+//   return acc;
+// }, []);
+
+// console.log(dobro);
+
+// const pessoas = [
+//   { nome: "Yago", idade: 25 },
+//   { nome: "Nathalia", idade: 25 },
+//   { nome: "Roberto", idade: 43 },
+//   { nome: "Fabiola", idade: 46 },
+//   { nome: "Luiz Carlos", idade: 47 },
+//   { nome: "Maria Luiza", idade: 13 },
+//   { nome: "Daniel", idade: 24 },
+// ];
+
+// const maisVelho = pessoas.reduce((acc, obj) => {
+//   if (acc.idade > obj.idade) return acc;
+//   return obj;
+// });
+
+// console.log(maisVelho);
+
+// const num = [5, 50, 80, 1, 2, 3, 5, 8, 7, 11, 15, 22, 27];
+
+// const pares = num.filter((v) => {
+//   if (v % 2 === 0) return v;
+// });
+
+// const dobro = pares.map((v) => {
+//   return v * 2;
+// });
+
+// const total = dobro.reduce((acc, v) => {
+//   return (acc += v);
+// }, 0);
+// console.log(total);
+
+// const a1 = [10, 20, 30, 40, 50, 60, 70, 80, 90];
+
+// let total = 0;
+
+// a1.forEach((value) => {
+//   return (total += value);
+// });
+
+// console.log(total);
+
+// const pessoa = {
+//   nome: "Yago",
+//   sobrenome: "Ramires",
+// };
+
+// const key = "nome";
+
+// console.log(pessoa[key]);
+
+// function Produto(nome, preco) {
+//   this.nome = nome;
+//   this.preco = preco;
+// }
+
+// Produto.prototype.desconto = function (percentual) {
+//   let percent = percentual / 100;
+//   return (this.preco = this.preco - this.preco * percent);
+// };
+
+// Produto.prototype.aumento = function (percentual) {
+//   let percent = percentual / 100;
+//   this.preco = this.preco + this.preco * percent;
+// };
+
+// const p1 = new Produto("Yeezy", 1300);
+// const p2 = new Produto("Jordan", 1099);
+
+// p1.desconto(5);
+// console.log(p1);
+
+// const p3 = {
+//   nome: "AirForce",
+//   preco: 699,
+// };
+
+// Object.setPrototypeOf(p3, Produto.prototype);
+
+// p3.desconto(10);
+// console.log(p3);
+
+// function Produto(nome, preco) {
+//   this.nome = nome;
+//   this.preco = preco;
+// }
+
+// Produto.prototype.aumento = function (quantia) {
+//   this.preco += quantia;
+// };
+// Produto.prototype.desconto = function (quantia) {
+//   this.preco -= quantia;
+// };
+
+// function Camiseta(nome, preco, cor) {
+//   Produto.call(this, nome, preco);
+//   this.cor = cor;
+// }
+
+// const camiseta = new Camiseta("regata", "99", "vermelha");
+
+// function Caneca(nome, preco, material, estoque) {
+//   Produto.call(this, nome, preco);
+//   this.material = material;
+
+//   Object.defineProperty(this, "estoque", {
+//     enumerable: true,
+//     configurable: false,
+//     get: function () {
+//       return estoque;
+//     },
+//     set: function (valor) {
+//       if (typeof valor !== "number") return;
+//       estoque = valor;
+//     },
+//   });
+// }
+
+// Caneca.prototype = Object.create(Produto.prototype);
+// Caneca.prototype.constructor = Caneca;
+
+// const caneca = new Caneca("Stanley", 199, "Inox", 57);
+
+// console.log(caneca);
+
+// caneca.estoque = "texto";
+// console.log(caneca.estoque);
