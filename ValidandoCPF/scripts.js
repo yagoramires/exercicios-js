@@ -35,8 +35,8 @@ function ValidaCPF(cpfInput) {
 }
 
 ValidaCPF.prototype.valida = function () {
-  if (typeof this.cpfLimpo === "undefined") return false;
-  if (this.cpfLimpo.length !== 11) return false;
+  if (this.cpfLimpo.length !== 11) return this.showInScreen('Insira um número com 11 dígitos!', '#ffffff' , "#000000")
+  if (this.isSequence()) return this.showInScreen('Uma sequência não é um CPF Válido!', '#dc143c' , "#ffffff")
 
   let cpfParcial = this.cpfLimpo.slice(0, -2);
   const firstSum = this.criaDigito(cpfParcial);
@@ -47,12 +47,14 @@ ValidaCPF.prototype.valida = function () {
   const secondSum = this.criaDigito(cpfParcial);
   const secondDigit = this.divideDigito(secondSum);
 
-  console.log(secondDigit);
-
-  return true;
+  if(this.checkDigito(this.cpfLimpo, firstDigit, secondDigit)) {
+    return this.showInScreen('CPF Válido', '#B6FF8B', '#000000')
+  } else {
+    return this.showInScreen('CPF Inválido', '#dc143c' , "#ffffff")
+  }
 };
 
-ValidaCPF.prototype.criaDigito = function (cpfParcial) {
+ValidaCPF.prototype.criaDigito = (cpfParcial) => {
   const cpfArray = Array.from(cpfParcial);
 
   if (cpfArray.length === 9) {
@@ -72,10 +74,27 @@ ValidaCPF.prototype.criaDigito = function (cpfParcial) {
   return false;
 };
 
-ValidaCPF.prototype.divideDigito = function (total) {
+ValidaCPF.prototype.divideDigito = (total) => {
   const div = 11 - (total % 11);
-
-  if (div > 9) return 0;
-
-  return div;
+  return div > 9 ? 0 : div
 };
+
+ValidaCPF.prototype.checkDigito = (cpfLimpo, firstDigit, secondDigit) => {
+  const cpfArr = Array.from(cpfLimpo).splice(-2,2)
+  if (Number(cpfArr[0]) !== firstDigit) return false
+  if (Number(cpfArr[1]) !== secondDigit) return false
+
+  return true
+}
+
+ValidaCPF.prototype.showInScreen = (resultado, bgColor, fontColor) => {
+  const result = document.querySelector('.container__result')
+  result.style.backgroundColor = bgColor
+  result.style.color = fontColor
+  return result.innerHTML = resultado
+}
+
+ValidaCPF.prototype.isSequence = function() {
+  const sequence = this.cpfLimpo[0].repeat(this.cpfLimpo.length)
+  return (this.cpfLimpo === sequence)
+}
