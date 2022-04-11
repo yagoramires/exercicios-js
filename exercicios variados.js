@@ -433,3 +433,111 @@
 
 // caneca.estoque = "texto";
 // console.log(caneca.estoque);
+
+
+// function Conta (ag, conta, saldo) {
+// this.agencia = ag
+// this.conta = conta
+// this.saldo = saldo
+// }
+
+// Conta.prototype.sacar = function (valor) {
+//   if (this.saldo >= valor) {
+//     this.saldo -= valor;
+//     return `Você sacou ${valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}. ${this.verSaldo()}`
+//   } else {
+//     return `Saldo insuficiente para sacar ${valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}. ${this.verSaldo()}`
+//   }
+// }
+// Conta.prototype.depositar = function (valor) {
+//     this.saldo += valor;
+//     return `Você depositou ${valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}. ${this.verSaldo()}`
+// }
+
+// Conta.prototype.verSaldo = function () {
+//   return `Saldo atual: ${this.saldo.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' })}`
+// }
+
+// const c1 = new Conta(1234, 909090, 3786.34)
+
+
+// // console.log(c1.sacar(7186.34))
+// // console.log(c1.depositar(947))
+// // console.log(c1.verSaldo())
+
+// function ContaCorrente (ag, conta, saldo, limite) {
+// Conta.call(this, ag, conta, saldo)
+// this.limite = limite
+// }
+
+// ContaCorrente.prototype = Object.create(Conta.prototype)
+// ContaCorrente.prototype.constructor = ContaCorrente
+
+// ContaCorrente.prototype.sacar = function (valor) {
+//   if ((this.saldo + this.limite) < valor) {
+//     return `Saldo insuficiente. ${this.verSaldo()}`
+//   }
+
+//   this.saldo -= valor
+//   return this.verSaldo()
+// }
+
+// const cc = new ContaCorrente(1234, 909090, 3786,10000)
+
+// console.log(cc.sacar(5000))
+
+// function contaPoupanca (ag, conta, saldo) {
+//   Conta.call(this, ag, conta, saldo)
+// }
+
+// contaPoupanca.prototype = Object.create(Conta.prototype)
+// contaPoupanca.prototype.constructor = contaPoupanca
+
+// // contaPoupanca.prototype.sacar = function() {
+  
+//   // }
+  
+//   const cp = new contaPoupanca(1234, 909090, 3786,10000)
+//   console.log(cp.sacar(5000))
+
+// const _velocidade = Symbol("velocidade")
+
+// class Carro {
+//   constructor(nome) {
+//     this.nome = nome
+//     this[_velocidade] = 0
+//   }
+
+//   acelerar() {
+//     if (this[_velocidade] >= 150) return
+//     this[_velocidade] += 10
+//   }
+
+//   frear() {
+//     if (this[_velocidade] < 0) return
+//     this[_velocidade] -= 10
+//   }
+
+//   get velocidade() { return this[_velocidade]}
+  
+//   set velocidade(valor) { 
+//     if (typeof valor !== 'number') return
+//     if (valor >= 100 || valor <= 0) return
+//     this[_velocidade] = valor
+//   }
+
+// }
+
+
+// const ferrari = new Carro('Ferrari')
+
+// console.log(ferrari.velocidade)
+
+// for (let i = 0; i <= 10; i++) {
+//   ferrari.acelerar()
+// }
+
+// console.log(ferrari.velocidade)
+
+// ferrari.velocidade = 190
+// console.log(ferrari.velocidade)
