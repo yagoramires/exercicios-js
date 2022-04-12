@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <title>CPF Validator</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="container__title">Formulário de cadastro</h1>
+      <ul class="container__legenda">
+        <li>Nenhum campo pode estar vazio</li>
+        <li>Usuário só podera conter letras e/ou números</li>
+        <li>Usuário deverá ter entre 3 e 12 caracteres</li>
+        <li>Senha precisa ter entre 6 e 12 caracteres</li>
+      </ul>
+      <form action="" class="container__form">
+        <input class="container__form__input name" placeholder="Nome"/>
+        <p class="container__form__error">teste</p>
+        <input class="container__form__input surname" placeholder="Sobrenome"/>
+        <input class="container__form__input cpf" placeholder="CPF"/>
+        <input class="container__form__input username" placeholder="Usuário"/>
+        <input type="password" class="container__form__input password" placeholder="Senha"/>
+        <input type="password" class="container__form__input repassword" placeholder="Repita a Senha"/>
+        <button class="container__form__button">Enviar</button>
+      </form>
+    </div>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
