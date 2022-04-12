@@ -18,6 +18,15 @@ body {
   background-color: #fff;
   border-radius: 0.25rem;
 
+  ul {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    margin: 0 auto;
+  }
+
   &__title {
     font-weight: 600;
     text-align: center;
@@ -38,6 +47,10 @@ body {
     font-size: 0.75rem;
     font-weight: 500;
     text-align: left;
+
+    &::placeholder {
+      padding: 0 0.3rem;
+    }
   }
 
   &__form__button {
@@ -55,9 +68,9 @@ body {
 
   &__form__error {
     color: #b22222;
-    font-size:0.7rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    text-align: center;
+    text-align: left;
     margin: 0.3rem 0;
   }
 

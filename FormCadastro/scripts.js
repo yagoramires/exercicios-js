@@ -1,198 +1,167 @@
-class ValidaFormulario{
-  constructor(){
-    this.form = document.querySelector('.container__form')
-    this.eventos()
+class ValidaFormulario {
+  constructor() {
+    this.form = document.querySelector(".container__form");
+    this.eventos();
   }
 
   eventos() {
-    this.form.addEventListener('submit', (e) => {
-      this.handleSubmit(e)
-    })
+    this.form.addEventListener("submit", (e) => {
+      this.handleSubmit(e);
+    });
   }
-  
+
   handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
-    const validFields = this.checkFields()
-    const validPass = this.checkPass()
+    const validFields = this.checkFields();
+    const validPass = this.checkPass();
 
-    // if(validFields && validPass) {
-    //   alert('Formulário enviado!')
-    //   this.form.submit()
-    // }
+    if (validFields && validPass) {
+      alert("Formulário enviado!");
+      this.form.submit();
+    }
   }
 
   checkFields() {
-    let valid = true
+    let valid = true;
 
-    for(let field of this.form.querySelectorAll('.container__form__input')) {
-      const errorField = field.placeholder.value
-      console.log(errorField)
+    for (let errorText of this.form.querySelectorAll(
+      ".container__form__error"
+    )) {
+      errorText.remove();
+    }
 
-      if(!field.value) {
-        this.createError(field, 'MSG')
-        valid = false
+    for (let field of this.form.querySelectorAll(".container__form__input")) {
+      const errorField = field.placeholder;
+
+      if (!field.value) {
+        this.createError(
+          field,
+          `O campo "${errorField}" não pode estar em branco.`
+        );
+        valid = false;
       }
     }
 
-    return valid
+    const validaCPF = new ValidaCPF(this.form.querySelector(".cpf").value);
+
+    if (!validaCPF.validation()) {
+      this.createError(
+        this.form.querySelector(".cpf"),
+        "O CPF inserido não é válido."
+      );
+      valid = false;
+    }
+
+    if (
+      this.form.querySelector(".username").value.length < 3 ||
+      this.form.querySelector(".username").value.length > 12
+    ) {
+      this.createError(
+        this.form.querySelector(".username"),
+        "O nome de usuário deve conter entre 3 e 12 caracteres."
+      );
+      valid = false;
+    }
+    if (!this.checkChar()) {
+      this.createError(
+        this.form.querySelector(".username"),
+        "O nome de usuário não pode conter caracteres especiais."
+      );
+
+      valid = false;
+    }
+
+    return valid;
   }
 
+  checkPass() {
+    let valid = true;
+
+    if (
+      this.form.querySelector(".password").value.length < 6 ||
+      this.form.querySelector(".password").value.length > 12
+    ) {
+      this.createError(
+        this.form.querySelector(".password"),
+        "A senha deve conter entre 6 e 12 caracteres."
+      );
+      valid = false;
+    }
+
+    if (
+      this.form.querySelector(".password").value !==
+      this.form.querySelector(".repassword").value
+    ) {
+      this.createError(
+        this.form.querySelector(".password"),
+        "As senhas devem ser iguais."
+      );
+      this.createError(
+        this.form.querySelector(".repassword"),
+        "As senhas devem ser iguais."
+      );
+
+      valid = false;
+    }
+
+    return valid;
+  }
   createError(field, msg) {
-    const createP = document.createElement('p')
-    createP.classList.add('.container__form__error')
-    createP.innerHTML = msg
-    field.insertAdjacentElement('afterend', createP)
+    const createP = document.createElement("p");
+    createP.innerHTML = msg;
+    createP.classList.add("container__form__error");
+    field.insertAdjacentElement("afterend", createP);
   }
 
-  checkPass(){
-    let valid = true
-
-    return valid
+  checkChar() {
+    const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+    if (specialChars.test(this.form.querySelector(".username").value)) {
+      return false;
+    }
+    return true;
   }
-  
 }
 
+const valida = new ValidaFormulario();
 
+class ValidaCPF {
+  constructor(cpfInput) {
+    Object.defineProperty(this, "cpfLimpo", {
+      value: cpfInput.replace(/\D+/g, ""),
+    });
+  }
+  validation() {
+    if (!this.cpfLimpo) return false;
+    if (this.cpfLimpo[0].repeat(this.cpfLimpo.length) === this.cpfLimpo)
+      return false;
 
+    const cpfArray = Array.from(this.cpfLimpo);
+    const numForSum = cpfArray.slice(0, -2);
+    const numForCheck = cpfArray.slice(9, 11);
 
+    const firstNum = ValidaCPF.numbersSum(numForSum);
+    const firstCheck = ValidaCPF.numberCheck(firstNum);
 
+    if (firstCheck !== Number(numForCheck[0])) return false;
 
+    numForSum.push(firstCheck);
+    const secondNum = ValidaCPF.numbersSum(numForSum);
+    const secondCheck = ValidaCPF.numberCheck(secondNum);
 
+    if (secondCheck !== Number(numForCheck[1])) return false;
+    return true;
+  }
 
-const valida = new ValidaFormulario()
+  static numbersSum(numForSum) {
+    return numForSum.reduce((acc, num, i) => {
+      const total = Number(num) * (numForSum.length + 1 - i);
+      return (acc += total);
+    }, 0);
+  }
 
-
-
-// const form = 
-// const nameInput = form.querySelector('.name')
-// const surnameInput = form.querySelector('.surname')
-// const cpfInput = form.querySelector('.cpf')
-// const userInput = form.querySelector('.username')
-// const passwordInput = form.querySelector('.password')
-// const repasswordInput = form.querySelector('.repassword')
-
-// form.addEventListener('submit', (e) => {
-//   e.preventDefault()
-
-//   const name = new IsEmpty(nameInput.value)
-//   const surname = new IsEmpty(surnameInput.value)
-//   const cpf = new IsEmpty(cpfInput.value)
-//   const username = new IsEmpty(userInput.value)
-//   const password = new IsEmpty(passwordInput.value)
-//   const repassword = new IsEmpty(repasswordInput.value)
-
-//   // if(!name.validation()) emptyMessage('Preencha seu nome.')
-//   // if(!surname.validation()) emptyMessage('Preencha seu sobrenome.')
-//   // if(!cpf.validation()) emptyMessage('Preencha seu CPF.')
-//   // if(!username.validation()) emptyMessage('Preencha seu usuário.')
-//   // if(!password.validation()) emptyMessage('Preencha sua senha.')
-//   // if(!repassword.validation()) emptyMessage('Preencha sua senha novamente')
-
-//   const userValido = new ValidaUsuario(userInput.value)
-//   const cpfValido = new ValidaCPF(cpfInput.value)
-//   const passValido = new ValidaSenha('senha123')
-//   // const passValido = new ValidaCPF(password.value)
-//   passValido.validation()
-//   // userValido.validation()
-//   // cpfValido.validation()
-//   // console.log(userValido.validation())
-//   // console.log(cpfValido.validation())
-  
-// })
-
-// class showErrorInScreen{
-//   constructor(){
-
-//   }
-
-//   createChild(){
-//     const createP = document.createElement('p')
-
-//     createP.classList.add('.container__form__error')
-//     // const input = 
-
-//   }
-// }
-
-// function IsEmpty(value) {
-//   this.value = value
-// }
-
-// IsEmpty.prototype.validation = function() {
-//   if(!this.value) return false
-//   return true
-// }
-
-// class ValidaCPF {
-//   constructor(cpfInput) {
-//     Object.defineProperty(this, 'cpfLimpo', {
-//       value: cpfInput.replace(/\D+/g, "")
-//     })
-//   }  
-//   validation() {
-//     if(!this.cpfLimpo) return false
-//     if (this.cpfLimpo[0].repeat(this.cpfLimpo.length) === this.cpfLimpo) return false
-    
-//     const cpfArray = Array.from(this.cpfLimpo)
-//     const numForSum = cpfArray.slice(0, -2)
-//     const numForCheck = cpfArray.slice(9, 11)
-    
-//     const firstNum = ValidaCPF.numbersSum(numForSum)
-//     const firstCheck = ValidaCPF.numberCheck(firstNum)
-    
-//     if (firstCheck !== Number(numForCheck[0])) return false
-    
-//     numForSum.push(firstCheck)
-//     const secondNum = ValidaCPF.numbersSum(numForSum)
-//     const secondCheck = ValidaCPF.numberCheck(secondNum)
-    
-//     if (secondCheck !== Number(numForCheck[1])) return false
-//     return true
-//   }
-  
-//   static numbersSum(numForSum) {
-//     return numForSum.reduce((acc, num, i)=>{
-//       const total = Number(num) * (numForSum.length + 1 - i)
-//       return acc += total
-//     }, 0)
-//   }
-  
-//   static numberCheck(num) {
-//     const div = 11 - (num % 11)
-//     return div > 9 ? 0 : div
-//   }
-// }
-
-// class ValidaUsuario {
-//   constructor(usernameInput){
-//     this.username = usernameInput
-//   }
-
-//   validation() {
-//     if (!this.username) return false
-//     if (this.username < 3) return false
-//     if (!this.checkChar()) return false
-//     return true
-//   }
-  
-//   checkChar(){  
-//     const specialChars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
-//     if (specialChars.test(this.username)) { return false }
-//     return true
-//   }
-  
-// }
-
-// class ValidaSenha{
-//   constructor(passwordInput){
-//     this.password = passwordInput
-//   }
-  
-//   validation() {
-//     if(!this.password) return false
-//     if(this.password.length < 3 || this.password.length > 12) return false
-    
-//     return true
-//   }
-// }
+  static numberCheck(num) {
+    const div = 11 - (num % 11);
+    return div > 9 ? 0 : div;
+  }
+}
