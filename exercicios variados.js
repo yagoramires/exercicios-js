@@ -1,5 +1,5 @@
-// const max = 10;
 // const min = 1;
+// const max = 10;
 
 // let num1 = Math.floor(Math.random() * (max - min) + min)
 // let num2 = Math.floor(Math.random() * (max - min) + min)
@@ -434,7 +434,6 @@
 // caneca.estoque = "texto";
 // console.log(caneca.estoque);
 
-
 // function Conta (ag, conta, saldo) {
 // this.agencia = ag
 // this.conta = conta
@@ -459,7 +458,6 @@
 // }
 
 // const c1 = new Conta(1234, 909090, 3786.34)
-
 
 // // console.log(c1.sacar(7186.34))
 // // console.log(c1.depositar(947))
@@ -494,9 +492,9 @@
 // contaPoupanca.prototype.constructor = contaPoupanca
 
 // // contaPoupanca.prototype.sacar = function() {
-  
+
 //   // }
-  
+
 //   const cp = new contaPoupanca(1234, 909090, 3786,10000)
 //   console.log(cp.sacar(5000))
 
@@ -519,15 +517,14 @@
 //   }
 
 //   get velocidade() { return this[_velocidade]}
-  
-//   set velocidade(valor) { 
+
+//   set velocidade(valor) {
 //     if (typeof valor !== 'number') return
 //     if (valor >= 100 || valor <= 0) return
 //     this[_velocidade] = valor
 //   }
 
 // }
-
 
 // const ferrari = new Carro('Ferrari')
 
@@ -541,3 +538,38 @@
 
 // ferrari.velocidade = 190
 // console.log(ferrari.velocidade)
+
+function rand() {
+  return Math.floor(Math.random() * (5 - 1) + 1);
+}
+
+function wait(msg, tempo) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(msg);
+    }, tempo * 1000);
+  });
+}
+
+wait("Phrase 1", rand())
+  .then((resposta) => {
+    console.log(resposta, rand());
+    return wait("Phrase 2", rand());
+  })
+  .then((resposta) => {
+    console.log(resposta, rand());
+    return wait("Phrase 3", rand());
+  })
+  .then((resposta) => {
+    console.log(resposta, rand());
+    return wait("Phrase 4", rand());
+  })
+  .then((resposta) => {
+    console.log(resposta, rand());
+    return wait(say(), rand());
+  })
+  .catch();
+
+function say() {
+  console.log("submit");
+}
