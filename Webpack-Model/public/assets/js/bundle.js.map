@@ -1,0 +1,1 @@
+{"version":3,"file":"bundle.js","mappings":";;;;;AAAAA,OAAO,CAACC,GAAR,CAAY,UAAZ;AACAC,KAAK,CAAC,SAAD,CAAL,C","sources":["webpack://Webpack-Model/./src/index.js"],"sourcesContent":["console.log(\"testando\");\r\nalert(\"puxa eu\");\r\n"],"names":["console","log","alert"],"sourceRoot":""}
