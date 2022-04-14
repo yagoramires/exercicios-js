@@ -20,5 +20,14 @@ body {
 
   &__title {
     margin-bottom: 2rem;
+    text-align: center;
+    color: #dc143c;
+  }
+
+  &__cpfGerado {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    letter-spacing: 5px;
   }
 }
