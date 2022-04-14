@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Model</title>
+  </head>
+  <body>
+    <section class="container">
+      <h1 class="container__title">Password Generator</h1>
+      <p class="container__result">Selecione as opções.</p>
+      <div class="container__options">
+        <div>
+          <p>Quantidade de caracteres</p>
+          <input type="number" class="quantidade" />
+        </div>
+
+        <div>
+          <p>Adicionar números</p>
+          <input type="checkbox" class="numeros" />
+        </div>
+
+        <div>
+          <p>Adicionar letras maiúsculas</p>
+          <input type="checkbox" class="maiusculas" />
+        </div>
+
+        <div>
+          <p>Adicionar letras minúsculas</p>
+          <input type="checkbox" class="minusculas" />
+        </div>
+        <div>
+          <p>Adicionar símbolos</p>
+          <input type="checkbox" class="simbolos" />
+        </div>
+      </div>
+      <button class="container__button">Gerar</button>
+    </section>
+    <script src="./assets/js/bundle.js"></script>
+  </body>
+</html>
