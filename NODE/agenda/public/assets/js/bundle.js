@@ -18604,7 +18604,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n}\n\nbody {\n  font-family: \"Poppins\", sans-serif;\n  background-image: linear-gradient(180deg, #b22222, #dc143c);\n  background-repeat: no-repeat;\n  background-attachment: fixed;\n}\n\n.container {\n  width: 25rem;\n  padding: 2rem;\n  margin: 50px auto;\n  background-color: #fff;\n  border-radius: 0.25rem;\n}\n.container__title {\n  margin-bottom: 2rem;\n}", "",{"version":3,"sources":["webpack://./frontend/assets/styles/style.scss"],"names":[],"mappings":"AAAA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;AACF;;AAEA;EACE,kCAAA;EACA,2DAAA;EACA,4BAAA;EACA,4BAAA;AACF;;AAEA;EACE,YAAA;EACA,aAAA;EACA,iBAAA;EACA,sBAAA;EACA,sBAAA;AACF;AACE;EACE,mBAAA;AACJ","sourcesContent":["* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: \"Poppins\", sans-serif;\r\n  background-image: linear-gradient(180deg, #b22222, #dc143c);\r\n  background-repeat: no-repeat;\r\n  background-attachment: fixed;\r\n}\r\n\r\n.container {\r\n  width: 25rem;\r\n  padding: 2rem;\r\n  margin: 50px auto;\r\n  background-color: #fff;\r\n  border-radius: 0.25rem;\r\n\r\n  &__title {\r\n    margin-bottom: 2rem;\r\n  }\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "", "",{"version":3,"sources":[],"names":[],"mappings":"","sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -19982,7 +19982,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-console.log("Hello World");
 })();
 
 /******/ })()
