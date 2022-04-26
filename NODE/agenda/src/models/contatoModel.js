@@ -18,12 +18,6 @@ function Contato(body) {
   this.contato = null
 }
 
-Contato.buscaPorId = async function (id) {
-  if(typeof id !== 'string') return
-  const user = await ContatoModel.findById(id)
-  return user
-}
-
 Contato.prototype.edit = async function (id){
   if(typeof id !== 'string') return
   this.valida()
@@ -32,18 +26,19 @@ Contato.prototype.edit = async function (id){
 }
 
 Contato.prototype.register = async function() {
-  this.valida()
+  await this.valida()
 
   if(this.errors.length > 0 ) return
   this.contato = await ContatoModel.create(this.body)
 }
 
-Contato.prototype.valida = function() {
+Contato.prototype.valida = async function() {
   this.cleanUp()
+  await this.userExists()
 
-  if(this.body.email && !validator.isEmail(this.body.email)) this.errors.push('E-mail inválido')
+  if(this.body.email && !validator.isEmail(this.body.email)) this.errors.push('E-mail inválido.')
   if(!this.body.name) this.errors.push('O nome é obrigatório.')
-  if(!this.body.email && !this.body.phone) this.errors.push('E-mail ou telefone devem ser enviados')
+  if(!this.body.email && !this.body.phone) this.errors.push('E-mail ou telefone devem ser enviados.')
 }
 
 Contato.prototype.cleanUp = function () {
@@ -59,7 +54,30 @@ Contato.prototype.cleanUp = function () {
     email: this.body.email,
     phone: this.body.phone
   }
+}
 
+Contato.prototype.userExists = async function () {
+  this.contato = await ContatoModel.findOne({email: this.body.email})
+
+  if (this.contato) this.errors.push('Usuário já cadastrado.')
+}
+
+//MÉTODOS ESTÁTICOS
+Contato.buscaPorId = async function (id) {
+  if(typeof id !== 'string') return
+  const contato = await ContatoModel.findById(id)
+  return contato
+}
+
+Contato.buscaContatos = async function () {
+  const contatos = await ContatoModel.find().sort({criadoEm: -1})
+  return contatos
+}
+
+Contato.delete = async function (id) {
+  if(typeof id !== 'string') return
+  const contato = await ContatoModel.findOneAndDelete({_id: id})
+  return contato
 }
 
 module.exports = Contato
