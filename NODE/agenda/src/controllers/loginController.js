@@ -42,7 +42,7 @@ exports.login = async function (req,res) {
       return
     }
     
-    req.flash('success', 'Seu usuário foi criado com sucesso!')
+    req.flash('success', 'Seu usuário foi conectado com sucesso!')
     req.session.user = login.user
     req.session.save(function() {
      return res.redirect('/login/index')

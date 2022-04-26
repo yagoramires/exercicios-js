@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const ContatoSchema = new mongoose.Schema({
-  name: {type: String, required: true },
+  name: {type: String, required: false },
   surname: {type: String, required: false, default: ''},
   email: {type: String, required: false, default: '' },
   phone: {type: String, required: false, default: '' },
@@ -18,11 +18,16 @@ function Contato(body) {
   this.contato = null
 }
 
+Contato.buscaPorId = async function (id) {
+  if(typeof id !== 'string') return
+  const user = await ContatoModel.findById(id)
+  return user
+}
+
 Contato.prototype.register = async function() {
   this.valida()
 
-  if(!this.errors.length > 0 ) return
-  console.log(this.body)
+  if(this.errors.length > 0 ) return
   this.contato = await ContatoModel.create(this.body)
 }
 
@@ -30,7 +35,7 @@ Contato.prototype.valida = function() {
   this.cleanUp()
 
   if(this.body.email && !validator.isEmail(this.body.email)) this.errors.push('E-mail inválido')
-  if(this.body.name === '') this.errors.push('O nome é obrigatório.')
+  if(!this.body.name) this.errors.push('O nome é obrigatório.')
   if(!this.body.email && !this.body.phone) this.errors.push('E-mail ou telefone devem ser enviados')
 }
 
